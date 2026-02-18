@@ -1,8 +1,12 @@
 // -*- mode: jsonc -*-
+// https://github.com/Alexays/Waybar/wiki/Configuration
 {
+  // "on-sigusr1": "toggle",
     // "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
     "height": 30, // Waybar height (to be removed for auto height)
+    "bar_id": "bar-0",
+    "ipc": true,
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
@@ -206,10 +210,11 @@
 		"menu": "on-click",
 		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
 		"menu-actions": {
-			"shutdown": "shutdown -p now",
-			"reboot": "shutdown -r now",
-			"suspend": "zzz",
-			"hibernate": "acpiconf -s 4"
+      "suspend": "systemctl suspend -i",
+      "sleep": "systemctl sleep",
+      "hibernate": "systemctl hibernate",
+			"reboot": "systemctl reboot",
+      "shutdown": "systemctl poweroff",
 		}
     }
 }
